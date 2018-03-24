@@ -1,0 +1,20 @@
+<h1>Edit <%= @stock.name %></h1>
+
+<form action="/stocks/<%=@stock.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label> Stock Name: </label>
+  <input type="text" name="stock_name" value="<%=@stock.name %>"> </br>
+
+  <label> Stock Ticker: </label>
+  <input type="text" name="ticker" value="<%=@stock.ticker%>"> </br>
+
+  <label> Select the Account to add this stock to. </label>
+  <select>
+    <% current_user.account.each do |account| %>
+      <option value=<%=account.id %> <%= "selected" if account.id == @stock.account.id %> ><%= account.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update Stock Position">
+</form>

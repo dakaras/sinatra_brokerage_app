@@ -1,0 +1,11 @@
+<h1>Add a Stock to Your Account Portfolio</h1>
+
+<form action="/accounts" method="post">
+  <label> Stock Name: </label>
+  <input type='text' name='name'>
+
+  <% current_user.accounts.each do |account| %>
+  <input type="checkbox" name="account_name" value="<%= account.id %>"> <%= account.name %><br>
+  <% end %>
+  <input type="submit" value="Buy Stock">
+</form>

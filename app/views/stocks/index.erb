@@ -1,0 +1,5 @@
+<% @stocks.each do |stock| %>
+  <%= stock.name %></br>
+  <%= stock.ticker %> </br>
+  <a href="/stocks/<%=stock.id%>/edit">Edit</a>
+<% end %>

@@ -1,0 +1,5 @@
+<% @accounts.each do |account| %>
+  <%= account.name %>
+  <%= account.category %>
+  <a href="/accounts/<%= account.id %>/edit">Edit Account </a><br>
+<% end %>

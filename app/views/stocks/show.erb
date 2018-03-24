@@ -1,0 +1,4 @@
+<%= @stock.name %>
+<%= @stock.ticker %><br>
+Account: <a href="/stocks/<%=@stock.account.id%>"><%= @stock.account.name %></a>
+<a href="/accounts/<%=@stock.id%>/edit">Edit Stock</a>

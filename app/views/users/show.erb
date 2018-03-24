@@ -1,0 +1,6 @@
+<h1> <%= @user.username %> Accounts </h1>
+<% @user.accounts.each do |account| %>
+  <ul>
+    <li><a href="/accounts/<%=account.id%>"><%= account.name %></a></li>
+  </ul>
+<% end %>

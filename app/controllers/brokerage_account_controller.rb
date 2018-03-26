@@ -2,7 +2,7 @@ require 'rack-flash'
 class AccountsController < ApplicationController
 
   get '/accounts' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       @accounts = Account.all
@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
   end
 
   get '/accounts/new' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       erb :'accounts/new'
@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
   end
 
   post '/accounts' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       if params[:name] != "" && params[:category] != ""
@@ -32,7 +32,7 @@ class AccountsController < ApplicationController
   end
 
   get '/accounts/:id' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       @account = Account.find_by(params[:id])
@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
   end
 
   get '/accounts/:id/edit' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       @account = Account.find_by(params[:id])
@@ -50,7 +50,7 @@ class AccountsController < ApplicationController
   end
 
   patch '/accounts/:id' do
-    if !logged_in
+    if !logged_in?
       redirect '/login'
     else
       @account = Account.find_by(params[:id])
@@ -63,5 +63,5 @@ class AccountsController < ApplicationController
       end
     end
   end
-  
+
 end

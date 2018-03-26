@@ -5,6 +5,8 @@
   <title>Sinatra Brokerage Investments</title>
 </head>
 <body>
+  <%= yield %>
+
   <nav>
     <% if logged_in? %>
 
@@ -12,20 +14,17 @@
     <a href="/logout"> Log Out </a>
     <p>Welcome, <%=current_user.username %></p>
 
-    <% else %>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
     <%end %>
   </nav>
 
   <div class="container">
-    <h1>Account Stock Portfolio</h1>
+    <h2>Account Stock Portfolio</h2>
     <% if !@error_message.nil? %>
     <div class="alert alert-warning">
       <%= @error_message %>
     </div>
     <% end %>
-    <%= yield %>
+
   </div>
 </body>
 </html>

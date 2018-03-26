@@ -1,5 +1,6 @@
 require 'rack-flash'
 class UsersController < ApplicationController
+  use Rack::Flash
 
   get '/signup' do
     if !session[:user_id]
@@ -10,11 +11,16 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params)
+    @user = User.new(params)
     if @user.save
+      @user = User.create(params)
       session[:id] = @user.id
       redirect '/accounts'
+    elsif User.all.include?(params[:username])
+      flash[:message] = "That username is taken. Please try a different one."
+      redirect '/accounts'
     else
+      flash[:message] = "All fields are created to create a new user. Please try again."
       redirect '/signup'
     end
   end
@@ -28,16 +34,16 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    @user = User.find_by(params[:username])
-    if @user && @user.authenticate(params[:password])
-      flash[:message] = "Welcome back, #{@user.username}!"
-      session[:id] = @user.id
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      flash[:message] = "Welcome back, #{user.username}!"
+      session[:id] = user.id
       redirect '/accounts'
     elsif user
       flash[:message] = "Incorrect password. Please try again."
       redirect to '/login'
     else
-      flash[:message] = "Username not found. Please create user for accounts."
+      flash[:message] = "Username not found. Please create user to setup accounts."
       redirect '/signup'
     end
   end

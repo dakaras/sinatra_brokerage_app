@@ -18,13 +18,13 @@ Specs:
 
     Include user input validations --> User class validates_presence_of username, email and password and validates that username is unique.
 
-    Display validation failures to user with error message (example form URL e.g. /posts/new) --> Validation failures displayed via errors method for post '/signup' in UsersController (line 31), post 'dogs/new' (line 38) and patch 'dogs/:id' (line 79) in AccountsController. Manual error messages entered in numerous places in both UsersController and DogsController. flash[:message] conditional contained in layout to avoid repetition.
+    Display validation failures to user with error message (example form URL e.g. /posts/new) --> Validation failures displayed via errors method for post '/signup' in UsersController (line 15), post '/accounts' (line 25) and patch 'accounts/:id' (line 57) in AccountsController. flash[:message] entered on many lines in both UsersController and AccountsController.
 
-    Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+    Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code.
 
 Confirm
 
-    You have a large number of small Git commits
-    Your commit messages are meaningful
-    You made the changes in a commit that relate to the commit message
-    You don't include changes in a commit that aren't related to the commit message
+  [X]  You have a large number of small Git commits
+  [X]  Your commit messages are meaningful
+  [X]  You made the changes in a commit that relate to the commit message
+  [X]  You don't include changes in a commit that aren't related to the commit message

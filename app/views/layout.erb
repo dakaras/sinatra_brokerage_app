@@ -14,15 +14,12 @@
     <a href="/logout"> Log Out </a>
     <p>Welcome, <%=current_user.username %></p>
 
-    <%end %>
+    <% end %>
   </nav>
 
   <div class="container">
+    <% if logged_in? %>
     <h2>Account Stock Portfolio</h2>
-    <% if !@error_message.nil? %>
-    <div class="alert alert-warning">
-      <%= @error_message %>
-    </div>
     <% end %>
 
   </div>

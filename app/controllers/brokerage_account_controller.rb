@@ -29,36 +29,39 @@ class AccountsController < ApplicationController
         erb :'accounts/new'
       end
     end
-
-    get '/accounts/:id/edit' do
-      if !logged_in
-        redirect '/login'
-      else
-        @account = Account.find_by(params[:id])
-        erb :'accounts/edit'
-      end
-    end
-
-    get '/accounts/:id' do
-      if !logged_in
-        redirect '/login'
-      else
-        @account = Account.find_by(params[:id])
-        erb :'accounts/show'
-      end
-    end
-
-    patch '/accounts/:id' do
-      @account = Account.find_by(params[:id])
-      if !logged_in
-        redirect '/login'
-      else
-        if params[:name] != "" && params[:category] != ""
-          Account.create(params)
-        else
-          erb :'accounts/edit'
-        end
-      end
-    end
-
   end
+
+  get '/accounts/:id' do
+    if !logged_in
+      redirect '/login'
+    else
+      @account = Account.find_by(params[:id])
+      erb :'accounts/show'
+    end
+  end
+
+  get '/accounts/:id/edit' do
+    if !logged_in
+      redirect '/login'
+    else
+      @account = Account.find_by(params[:id])
+      erb :'accounts/edit'
+    end
+  end
+
+  patch '/accounts/:id' do
+    if !logged_in
+      redirect '/login'
+    else
+      @account = Account.find_by(params[:id])
+      if params[:name] != "" && params[:category] != ""
+        @account.update
+        redirect "/accounts/#{@account.id}"
+      else
+        flash[:message] = "All fields required to edit account."
+        redirect "/accounts/#{@account.id}"
+      end
+    end
+  end
+  
+end

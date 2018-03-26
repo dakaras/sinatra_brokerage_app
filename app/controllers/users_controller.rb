@@ -5,14 +5,14 @@ class UsersController < ApplicationController
     if !session[:user_id]
       erb :'users/create_user'
     else
-      redirect '/accounts'
+      redirect '/stocks'
     end
   end
 
   post '/signup' do
-    user = User.create(params)
-    if user.save
-      session[:id] = user.id
+    @user = User.create(params)
+    if @user.save
+      session[:id] = @user.id
       redirect '/accounts'
     else
       redirect '/signup'
@@ -28,10 +28,10 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(params[:username])
-    if user && user.authenticate(params[:password])
-      flash[:message] = "Welcome back, #{user.username}!"
-      session[:id] = user.id
+    @user = User.find_by(params[:username])
+    if @user && @user.authenticate(params[:password])
+      flash[:message] = "Welcome back, #{@user.username}!"
+      session[:id] = @user.id
       redirect '/accounts'
     elsif user
       flash[:message] = "Incorrect password. Please try again."
@@ -44,6 +44,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     if !logged_in?
+      flash[:message] = "Please Log In."
       redirect '/accounts'
     end
 

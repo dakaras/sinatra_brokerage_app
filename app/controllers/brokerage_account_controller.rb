@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   use Rack::Flash
 
   get '/accounts' do
-    redirect_if_not_logged_in
+    
     @accounts = current_user.accounts
     erb :'accounts/index'
   end

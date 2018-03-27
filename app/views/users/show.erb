@@ -1,3 +1,7 @@
+<h3><% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %></h3>
+
 <h1> <%= @user.username %> Accounts </h1>
 <% @user.accounts.each do |account| %>
   <ul>

@@ -6,13 +6,13 @@ mark = User.create({username: "mark456", email: "mark@gmail.com", password: "inv
 luke = User.create({username: "luke007", email: "luke@yahoo.com", password: "password"})
 
 # Accounts
-john_primary = Account.create(name: "tech", category: "growth")
-john_secondary = Account.create(name: "industrial", category: "value")
+john_primary = Account.create(name: "Tech Fund", category: "growth", user_id: "#{john.id}")
+john_secondary = Account.create(name: "Industrials Fund", category: "value", user_id: "#{john.id}")
 
 # Stocks
-aapl = Stock.create(name: "Apple", ticker:"AAPL")
-msft = Stock.create(name: "Microsoft", ticker: "MSFT")
+aapl = Stock.create(name: "Apple", ticker:"AAPL", account_id: "#{john_primary.id}")
+msft = Stock.create(name: "Microsoft", ticker: "MSFT", account_id: "#{john_primary.id}")
 googl = Stock.create(name: "Google" , ticker: "GOOGL")
-ge = Stock.create(name: "General Electric", ticker: "GE")
-unp = Stock.create(name: "Union Pacific", ticker: "UNP" )
-x = Stock.create(name: "US Steel", ticker: "X")
+ge = Stock.create(name: "General Electric", ticker: "GE", account_id: "#{john_secondary.id}")
+x = Stock.create(name: "US Steel", ticker: "X", account_id: "#{john_secondary.id}")
+unp = Stock.create(name: "Union Pacific", ticker: "UNP")

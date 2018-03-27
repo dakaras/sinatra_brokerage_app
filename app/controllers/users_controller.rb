@@ -37,7 +37,6 @@ class UsersController < ApplicationController
   post '/login' do
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-      binding.pry
       flash[:message] = "Welcome back, #{user.username}!"
       session[:id] = user.id
       redirect to '/accounts'

@@ -15,8 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       @user = User.create(username: params[:username], password: params[:password], email: params[:email])
       session[:id] = @user.id
-      @accounts = current_user.accounts
-      erb :'accounts/index'
+      erb :'accounts/new'
     elsif User.all.include?(params[:username])
       flash[:message] = "That username is taken. Please try a different one."
       redirect '/login'

@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
   use Rack::Flash
 
   get '/accounts' do
-    
     @accounts = current_user.accounts
     erb :'accounts/index'
   end

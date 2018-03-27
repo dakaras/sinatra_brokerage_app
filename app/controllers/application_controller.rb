@@ -13,7 +13,20 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  # before do
+  #   pass if ["login", "signup", nil].include? request.path_info.split('/')[1]
+  #   if !logged_in?
+  #     redirect '/'
+  #   end
+  # end
+
   helpers do
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect "/login"
+      end
+    end
+
     def logged_in?
       !!current_user
     end

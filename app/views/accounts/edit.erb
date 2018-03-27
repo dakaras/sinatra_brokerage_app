@@ -1,4 +1,4 @@
-<h1>Edit Account<%= @account.name %></h1>
+<h1><%= @account.name %></h1>
 
 <form action="/accounts/<%=@account.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">

@@ -23,24 +23,24 @@ class StocksController < ApplicationController
     end
   end
 
-  get '/stocks/:id/edit' do
-    @stocks = Stock.all
-    erb :'stocks/edit'
-  end
-
-  patch '/stocks/:id' do
-    @stock = Stock.find_by(params[:id])
-    if params[:name] != "" && params[:ticker] != ""
-      Stock.update(params)
-      redirect "/stocks/#{stock.id}"
-    else
-      flash[:message] = "All fields are required to add stock to account."
-      redirect "/stocks/#{stock.id}"
-    end
-  end
-
-  get '/stocks/:id' do
-    @stock = Stock.find_by(params[:id])
-    erb :'stocks/show'
-  end
+  # get '/stocks/:id/edit' do
+  #   @stocks = Stock.all
+  #   erb :'stocks/edit'
+  # end
+  #
+  # patch '/stocks/:id' do
+  #   @stock = Stock.find_by(params[:id])
+  #   if params[:name] != "" && params[:ticker] != ""
+  #     Stock.update(params)
+  #     redirect "/stocks/#{stock.id}"
+  #   else
+  #     flash[:message] = "All fields are required to add stock to account."
+  #     redirect "/stocks/#{stock.id}"
+  #   end
+  # end
+  #
+  # get '/stocks/:id' do
+  #   @stock = Stock.find_by(params[:id])
+  #   erb :'stocks/show'
+  # end
 end

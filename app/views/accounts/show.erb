@@ -8,6 +8,12 @@
   <p>Ticker:  <%= stock.ticker %> </p>
 <% end%>
 </ul><br>
+
+<form action="/accounts/<%= @account.id %>/delete" method="post">
+   <input type="hidden" id="hidden" name="_method" value="delete">
+   <button type="submit" name="button">Delete Account</button>
+</form>
+
 <a href="/stocks/new">Add Stock</a>
 <a href="/accounts/<%=@account.id%>/edit">Edit Account</a><br>
 <a href='/accounts'>Home</a>

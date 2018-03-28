@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
   post '/accounts' do
     if params[:name] != "" && params[:category] != ""
       Account.create(name: params[:name], category: params[:category])
-        redirect 'stocks/new'
+      redirect 'stocks/new'
     else
       flash[:message] = "All fields are required to create account."
       erb :'accounts/new'
@@ -44,4 +44,15 @@ class AccountsController < ApplicationController
     end
   end
 
+  delete '/accounts/:id/delete' do
+    @user = current_user
+    @account = Account.find_by_id(params[:id])
+    if @user && @account && @account.user_id == @user.id
+      @account.delete
+      flash[:message] = "Account has been deleted."
+      redirect to '/accounts'
+    else
+      redirect to '/login'
+    end
+  end
 end

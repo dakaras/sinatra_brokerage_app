@@ -2,12 +2,7 @@
 
 <form action="/stocks" method="post">
 
-  <% Stock.all.each do |stock| %>
-  <input type="checkbox" name="name" value="<%= stock.id %>"> <%= stock.name %><br>
-  <% end %>
-  <input type="submit" value="Buy Stock">
-
-  <h5>Add a Stock that isn't Listed:<h5>
+  <h5>Add a Stock:<h5>
     <label> Stock Name: </label>
     <input type='text' name='name'>
 

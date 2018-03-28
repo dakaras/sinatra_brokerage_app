@@ -1,4 +1,4 @@
-<h1>Edit <%= @stock.name %></h1>
+<h1>Edit Stocks</h1>
 
 <form action="/stocks/<%=@stock.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
@@ -9,12 +9,19 @@
   <label> Stock Ticker: </label>
   <input type="text" name="ticker" value="<%=@stock.ticker%>"> </br>
 
+  <label>Stocks: </label>
+  <% @stocks.all.each do |stock| %>
+    <label> <%= stock.name  %></label>
+    <input type="checkbox" name="name" value="<%= stock.id %>"> <%= stock.name %><%='checked' if @account.stocks.include?(stock) %>><br>
+  <% end %>
+
   <label> Select the Account to add this stock to. </label>
   <select>
-    <% current_user.account.each do |account| %>
-      <option value=<%=account.id %> <%= "selected" if account.id == @stock.account.id %> ><%= account.name %></option>
+    <% current_user.accounts.each do |account| %>
+    <option value="<%=account.id %>" <%= account.name %></option>
     <% end %>
   </select>
 
   <input type="submit" value="Update Stock Position">
 </form>
+<input type="checkbox" name="name" value="<%= stock.id %>"> <%= stock.name %><%='checked' if @account.stocks.include?(stock) %>><br>

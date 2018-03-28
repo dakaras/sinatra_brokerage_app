@@ -3,6 +3,7 @@ class StocksController < ApplicationController
   use Rack::Flash
 
   get '/stocks' do
+    @account = Account.find_by(params[:id])
     @stocks = Stock.all
     erb :'stocks/index'
   end
@@ -14,6 +15,7 @@ class StocksController < ApplicationController
   post '/stocks' do
     if params[:name] != "" && params[:ticker] != ""
       Stock.create(name: params[:name], ticker: params[:ticker])
+      flash[:message] = "Stock has been added to Account."
       redirect '/accounts'
     else
       flash[:message] = "All fields are required to add stock to account."
@@ -22,7 +24,7 @@ class StocksController < ApplicationController
   end
 
   get '/stocks/:id/edit' do
-    @stock = Stock.find_by(params[:id])
+    @stocks = Stock.all
     erb :'stocks/edit'
   end
 

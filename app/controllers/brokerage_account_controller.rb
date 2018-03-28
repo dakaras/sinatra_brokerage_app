@@ -4,6 +4,7 @@ class AccountsController < ApplicationController
 
   get '/accounts' do
     @accounts = current_user.accounts
+    @stocks = Stock.all
     erb :'accounts/index'
   end
 
@@ -28,6 +29,7 @@ class AccountsController < ApplicationController
 
   get '/accounts/:id/edit' do
     @account = Account.find_by(params[:id])
+    @stocks = @account.stocks
     erb :'accounts/edit'
   end
 

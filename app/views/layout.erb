@@ -5,23 +5,19 @@
   <title>Sinatra Brokerage Investments</title>
 </head>
 <body>
-  <%= yield %>
-
-  <nav>
-    <% if logged_in? %>
-
-    <a href="/accounts/new"> Open a Brokerage Account</a>
-    <a href="/logout"> Log Out </a>
-    <p>Welcome, <%=current_user.username %></p>
-
-    <% end %>
-  </nav>
-
   <div class="container">
     <% if logged_in? %>
-    <h2>Account Stock Portfolio</h2>
+    <h2>Account Portfolio for <%= current_user.username %></h2>
     <% end %>
 
   </div>
+  <%= yield %>
+  <nav>
+    <% if logged_in? %>
+    <!-- <a href="/accounts/new"> Open an Account</a><br> -->
+    <a href="/logout"> Log Out </a>
+    <% end %>
+  </nav>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <% @stocks.each do |stock| %>
-  <%= stock.name %></br>
-  <%= stock.ticker %> </br>
-  <a href="/stocks/<%=stock.id%>/edit">Edit</a>
+  <label>Name: <%= stock.name %></label>
+  <label>Ticker: <%= stock.ticker %></label><br>
+  <a href="/stocks/<%=stock.id%>/edit">Edit Stock</a>
 <% end %>

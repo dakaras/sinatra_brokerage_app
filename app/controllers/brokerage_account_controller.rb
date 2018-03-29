@@ -14,8 +14,8 @@ class AccountsController < ApplicationController
 
   post '/accounts' do
     if params[:name] != "" && params[:category] != ""
-      Account.create(name: params[:name], category: params[:category])
-      redirect 'stocks/new'
+      Account.create(name: params[:name], category: params[:category], user_id: current_user.id)
+      redirect '/accounts'
     else
       flash[:message] = "All fields are required to create account."
       erb :'accounts/new'

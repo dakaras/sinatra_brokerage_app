@@ -2,4 +2,10 @@
 <label>Ticker: <%= @stock.ticker %></label><br>
 Account: <a href="/stocks/<%=@stock.account.id%>"><%= @stock.account.name %></a><br>
 <br>
+
+<form action="/stocks/<%= @stock.id %>/delete" method="post">
+   <input type="hidden" id="hidden" name="_method" value="delete">
+   <button type="submit" name="button">Delete Stock</button>
+</form>
+
 <a href="/accounts">Accounts</a>

@@ -9,4 +9,9 @@
     <label> Stock Ticker: </label>
     <input type='text' name='ticker'>
   <input type="submit" value="Buy Stock">
+
+  <% @account.stocks.each do |stock| %>
+    <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
+    <p>Ticker:  <%= stock.ticker %> </p>
+  <% end%>
 </form>

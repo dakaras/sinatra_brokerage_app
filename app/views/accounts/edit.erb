@@ -9,5 +9,13 @@
   <input type="text" name="category" value="<%=@account.category %>"> </br>
 
   <input type="submit" value="Update"><br>
-  <a href="/stocks/new">Add Stock</a>
+
+  <ul>
+  <h3>Stocks Held in <%= @account.name %></h3>
+  <% @account.stocks.each do |stock| %>
+    <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
+    <p>Ticker:  <%= stock.ticker %> </p>
+  <% end%>
+  </ul><br>
+  <a href="/stocks/edit">Edit Stocks</a>
 </form>

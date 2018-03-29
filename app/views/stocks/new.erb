@@ -1,4 +1,7 @@
 <h1>Add a Stock to Your Account Portfolio</h1>
+<h3><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %></h3>
 
 <form action="/stocks" method="post">
 

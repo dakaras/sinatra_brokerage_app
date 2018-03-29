@@ -12,9 +12,11 @@ john_secondary = Account.create(name: "Industrials Fund", category: "value", use
 # Stocks
 aapl = Stock.create(name: "Apple", ticker:"AAPL", account_id: "#{john_primary.id}")
 msft = Stock.create(name: "Microsoft", ticker: "MSFT", account_id: "#{john_primary.id}")
-googl = Stock.create(name: "Google" , ticker: "GOOGL")
+
 ge = Stock.create(name: "General Electric", ticker: "GE", account_id: "#{john_secondary.id}")
 x = Stock.create(name: "US Steel", ticker: "X", account_id: "#{john_secondary.id}")
+
+googl = Stock.create(name: "Google" , ticker: "GOOGL")
 unp = Stock.create(name: "Union Pacific", ticker: "UNP")
 fcx = Stock.create(name: "Freeport Mcmoran", ticker: 'FCX')
 a = Stock.create(name: "Alcoa", ticker: "A")

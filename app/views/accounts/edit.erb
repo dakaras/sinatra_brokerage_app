@@ -1,4 +1,7 @@
 <h2><%= @account.name %></h2>
+<h3><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %></h3>
 
 <form action="/accounts/<%=@account.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
@@ -17,5 +20,5 @@
     <p>Ticker:  <%= stock.ticker %> </p>
   <% end%>
   </ul><br>
-  <a href="/stocks/edit">Edit Stocks</a>
+  <a href="/stocks/new">Add Stock</a>
 </form>

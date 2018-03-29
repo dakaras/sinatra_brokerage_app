@@ -1,4 +1,7 @@
 <h1>Edit Stocks</h1>
+<h3><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %></h3>
 
 <form action="/stocks/<%=@stock.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">

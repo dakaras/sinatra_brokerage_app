@@ -43,7 +43,7 @@ class StocksController < ApplicationController
     @stock = Stock.find_by(params[:id])
     erb :'stocks/show'
   end
-  
+
   delete '/stocks/:id/delete' do
     @user = current_user
     @stock = Account.find_by_id(params[:id])

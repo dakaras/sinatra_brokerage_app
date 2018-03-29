@@ -1,4 +1,7 @@
 <h1>Open a New Brokerage Account</h1>
+<h3><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <% end %></h3>
 
 <form action="/accounts" method="post">
   <label> Account Name: </label>

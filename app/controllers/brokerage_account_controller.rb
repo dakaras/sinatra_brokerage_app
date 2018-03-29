@@ -28,14 +28,14 @@ class AccountsController < ApplicationController
   end
 
   get '/accounts/:id/edit' do
-    @account = Account.find_by(params[:id])
+    @account = Account.find(params[:id])
     @stocks = @account.stocks
     erb :'accounts/edit'
   end
 
   patch '/accounts/:id' do
     @account = Account.find_by(params[:id])
-    if params[:name] != "" && params[:category] != "" && current_user.id == @account.user_id
+    if params[:name] != " " && params[:category] != " " && current_user.id == @account.user_id
       @account.update(name: params[:name], category: params[:category], user_id: current_user.id)
       redirect "/accounts/#{@account.id}"
     else

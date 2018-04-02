@@ -3,18 +3,24 @@
   <%= flash[:message] %>
   <% end %></h3>
 
-<form action="/stocks" method="post">
+  <form action="/stocks" method="post">
 
-  <h5>Add a Stock:<h5>
-    <label> Stock Name: </label>
-    <input type='text' name='name'>
+    <h5>Add a Stock:<h5>
+      <label> Stock Name: </label>
+      <input type='text' name='name'>
 
-    <label> Stock Ticker: </label>
-    <input type='text' name='ticker'>
-  <input type="submit" value="Buy Stock">
+      <label> Stock Ticker: </label>
+      <input type='text' name='ticker'>
 
-  <% @account.stocks.each do |stock| %>
-    <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
-    <p>Ticker:  <%= stock.ticker %> </p>
-  <% end%>
-</form>
+      <!-- need drop down menu with accounts to pass id in post route -->
+
+      <select name="account_id">
+        <% @user.accounts.map do |account| %>
+          <option name="<%= account.id %>" id="<%= account.id %>" value="<%= account.id %>"><%= account.name %></option>
+        <% end %>
+      </select>
+
+      <input type="submit" value="Buy Stock">
+
+
+    </form>

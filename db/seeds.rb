@@ -10,11 +10,15 @@ john_primary = Account.create(name: "Tech Fund", category: "growth", user_id: "#
 john_secondary = Account.create(name: "Industrials Fund", category: "value", user_id: "#{john.id}")
 
 # Stocks
-aapl = Stock.create(name: "Apple", ticker:"AAPL", account_id: "#{john_primary.id}")
-msft = Stock.create(name: "Microsoft", ticker: "MSFT", account_id: "#{john_primary.id}")
+aapl = Stock.create(name: "Apple", ticker:"AAPL")
+msft = Stock.create(name: "Microsoft", ticker: "MSFT")
+john_primary.stocks << aapl
+john_primary.stocks << msft
 
-ge = Stock.create(name: "General Electric", ticker: "GE", account_id: "#{john_secondary.id}")
-x = Stock.create(name: "US Steel", ticker: "X", account_id: "#{john_secondary.id}")
+ge = Stock.create(name: "General Electric", ticker: "GE")
+x = Stock.create(name: "US Steel", ticker: "X")
+john_secondary.stocks << ge
+john_secondary.stocks << x
 
 googl = Stock.create(name: "Google" , ticker: "GOOGL")
 unp = Stock.create(name: "Union Pacific", ticker: "UNP")

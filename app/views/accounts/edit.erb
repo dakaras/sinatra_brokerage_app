@@ -3,22 +3,24 @@
   <%= flash[:message] %>
   <% end %></h3>
 
-<form action="/accounts/<%=@account.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <label> Account Name: </label>
-  <input type="text" name="name" value="<%=@account.name %>"> </br>
+  <form action="/accounts/<%=@account.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label> Account Name: </label>
+    <input type="text" name="name" value="<%=@account.name %>"> </br>
 
-  <label> Account Category: </label>
-  <input type="text" name="category" value="<%=@account.category %>"> </br>
+    <label> Account Category: </label>
+    <input type="text" name="category" value="<%=@account.category %>"> </br>
 
-  <input type="submit" value="Update"><br>
+    <input type="submit" value="Update"><br>
 
-  <ul>
-  <h3>Stocks Held in <%= @account.name %></h3>
-  <% @account.stocks.each do |stock| %>
-    <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
-    <p>Ticker:  <%= stock.ticker %> </p>
-  <% end%>
-  </ul><br>
-  <a href="/stocks/new">Add Stock</a>
-</form>
+    <ul>
+      <h3>Stocks Held in <%= @account.name %></h3>
+      <% if !@account.stocks.empty?%>
+        <% @account.stocks.each do |stock| %>
+        <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
+        <p>Ticker:  <%= stock.ticker %> </p>
+       <% end%>
+     <% end %>
+    </ul><br>
+    <a href="/stocks/new">Add Stock</a>
+  </form>

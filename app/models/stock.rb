@@ -1,3 +1,4 @@
 class Stock < ActiveRecord::Base
-  belongs_to :account 
+  has_many :account_stocks
+  has_many :accounts, through: :account_stocks
 end

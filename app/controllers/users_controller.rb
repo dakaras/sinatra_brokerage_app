@@ -14,17 +14,12 @@ class UsersController < ApplicationController
   post '/signup' do
     @user = User.new(username: params[:username], password: params[:password], email: params[:email])
     if @user.save
-      @user = User.create(username: params[:username], password: params[:password], email: params[:email])
       session[:id] = @user.id
       erb :'accounts/new'
-    elsif User.all.detect{|username| params[:username]== username}
-      flash[:message] = "That username is taken. Please try a different one."
-      binding.pry
-      redirect '/login'
     else
       flash[:message] = "All fields must be filled to create a new user. Please try again."
-      binding.pry
-      redirect '/signup'
+      flash[:message] = @user.errors.full_messages.first
+      erb :'users/create_user'
     end
   end
 

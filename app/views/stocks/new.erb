@@ -12,11 +12,13 @@
       <label> Stock Ticker: </label>
       <input type='text' name='ticker'>
 
+      <label> Shares to Buy: </label>
+      <input type='number' name='shares'>
       <!-- need drop down menu with accounts to pass id in post route -->
 
       <select name="account_id">
         <% @user.accounts.map do |account| %>
-          <option name="<%= account.id %>" id="<%= account.id %>" value="<%= account.id %>"><%= account.name %></option>
+          <option name="<%= account.id %>" id="<%= account.id %>" value="<%= account.id %>"><%= account.name.capitalize %></option>
         <% end %>
       </select>
 

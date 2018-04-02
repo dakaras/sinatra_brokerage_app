@@ -6,19 +6,18 @@
   <form action="/accounts/<%=@account.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label> Account Name: </label>
-    <input type="text" name="name" value="<%=@account.name %>"> </br>
+    <input type="text" name="name" value="<%=@account.name.capitalize %>"> </br>
 
     <label> Account Category: </label>
-    <input type="text" name="category" value="<%=@account.category %>"> </br>
+    <input type="text" name="category" value="<%=@account.category.capitalize %>"> </br>
 
     <input type="submit" value="Update"><br>
 
     <ul>
-      <h3>Stocks Held in <%= @account.name %></h3>
+      <h3>Stocks Held in <%= @account.name.capitalize %></h3>
       <% if !@account.stocks.empty?%>
         <% @account.stocks.each do |stock| %>
-        <li><a href="/stocks/<%=stock.id%>"><%= stock.name %></a> </li><br>
-        <p>Ticker:  <%= stock.ticker %> </p>
+        <li><h3><a href="/stocks/<%=stock.id%>"><%= stock.name.capitalize %></a></h3> </li><br>
        <% end%>
      <% end %>
     </ul><br>

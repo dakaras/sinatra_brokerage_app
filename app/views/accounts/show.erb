@@ -1,5 +1,5 @@
-<%= @account.name %>
-<%= @account.category %>
+<h3><%= @account.name.capitalize %></h3>
+<h3><%= @account.category.capitalize %></h3>
 
 <h2>Stocks:</h2>
 <ul>
@@ -13,7 +13,7 @@
    <input type="hidden" id="hidden" name="_method" value="delete">
    <button type="submit" name="button">Delete Account</button>
 </form>
-
-<a href="/stocks/new">Add Stock</a>
+<br>
+<a href="/stocks/new">Add Stock</a><br>
 <a href="/accounts/<%=@account.id%>/edit">Edit Account</a><br>
 <a href='/accounts'>Home</a>

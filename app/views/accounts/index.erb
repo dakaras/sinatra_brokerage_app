@@ -3,7 +3,7 @@
 <% end %></h3>
 
 <% @accounts.each do |account| %>
-  <a href="/accounts/<%= account.id %>/edit"><%= account.name %></a>
+  <a href="/accounts/<%= account.id %>/edit"><%= account.name.capitalize %></a>
   <%= account.category.capitalize %><br>
 <% end %><br>
 <button><a href="/accounts/new">Open a New Account</a></button>

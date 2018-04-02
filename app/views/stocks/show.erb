@@ -1,6 +1,7 @@
-<label>Stock Name: <%= @stock.name %></label><br>
-<label>Ticker: <%= @stock.ticker %></label><br>
-Account: <a href="/stocks/<%=@stock.account.id%>"><%= @stock.account.name %></a><br>
+<h3>Stock Name: <%= @stock.name.capitalize %></h3>
+<h3>Ticker: <%= @stock.ticker.upcase %></h3>
+<h3>Shares: <%= @stock.shares %></h3><br>
+
 <br>
 
 <form action="/stocks/<%= @stock.id %>/delete" method="post">

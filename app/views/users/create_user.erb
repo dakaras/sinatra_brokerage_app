@@ -1,7 +1,7 @@
+<h1> Create a User Profile to Set Up Brokerage Accounts </h1>
 <h3><% if flash.has?(:message) %>
   <%= flash[:message] %>
   <% end %></h3>
-
   <form action="/signup" method="post">
     <p>Username: <input type="text" name="username"></p>
 

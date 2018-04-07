@@ -16,7 +16,6 @@ class AccountsController < ApplicationController
     @account = Account.new(name: params[:name], category: params[:category], user_id: current_user.id)
     if @account.save
       flash[:message] = "You have created you're account!"
-      binding.pry
       redirect "/accounts/#{@account.id}"
     else
       flash[:message] = "All fields are required to create account."

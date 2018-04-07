@@ -13,9 +13,11 @@ class AccountsController < ApplicationController
   end
 
   post '/accounts' do
-    if params[:name] != "" && params[:category] != ""
-      Account.create(name: params[:name], category: params[:category], user_id: current_user.id)
-      redirect '/accounts'
+    @account = Account.new(name: params[:name], category: params[:category], user_id: current_user.id)
+    if @account.save
+      flash[:message] = "You have created you're account!"
+      binding.pry
+      redirect "/accounts/#{@account.id}"
     else
       flash[:message] = "All fields are required to create account."
       erb :'accounts/new'
@@ -29,7 +31,11 @@ class AccountsController < ApplicationController
 
   get '/accounts/:id/edit' do
     @account = Account.find(params[:id]) #.find doesn't need a keyword argument to search params hash
-    erb :'accounts/edit'
+    if current_user.id == @account.user_id
+      erb :'accounts/edit'
+    else
+      redirect '/accounts'
+    end
   end
 
   patch '/accounts/:id' do
